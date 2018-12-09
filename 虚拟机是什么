@@ -1,0 +1,96 @@
+一. 安装虚拟机
+
+##### virtualbox下载地址: 
+``https://www.virtualbix.org/wiki/Download_Old_Builds_5_1``
+
+二. 镜像下载
+##### Centos官方下载地址:
+
+``https://www.centos.org/download/``
+
+##### Centos下载
+``http://mirrors.163.com/centos/7/isos/x86_64/Centos-7-x86_64-Minimal-1611.iso``
+
+三. 64位操作系统与32位操作系统的区别
+
+四. 云服务器的平台
+1. 阿里云
+2. 腾讯云
+
+五. 准备工作
++ 查看IP ``ifconfig`` 
+
++ 查看网络脚本文件
+``vi /etc/sysconfig/network-scripts/ifcfg-xx``
+
++ 打开网络脚本文件后,我们把
+``ONBOOT=no`` 改为 ``ONBOOT=yes`` 然后进行保存.
+
++ 然后使用命令进行网络重启 ``service network restart`` 我们可以看到内网ip ``10.0.2.15``
+
++ 最后我们安装软件 ``yum install net-tools`` 这个命令安装完后即可使用 ``ifconfig``命令
+
++ 修改虚拟机的网络模式为:桥接.改完后我们会看到我们的ip变为统一形式.
+
++ 替换默认源,具体详情查看该文档: ``http://mirrors.163.com/.help/centos.html``
+
++ 安装vim
+
+六. 认识ssh
++ (1)ssh是什么?
++ (2)linux平台安装服务端软件: ``yum install openssh-server`` 通常情况下centos在安装openssh-server时,ssh的客户端就已经安装好了.
++ (3)linux平台需要安装客户端软件:SSH工具``yum install openssh-clients``
++ (4)使用方法: ssh root@192.168.10.199
++ (5)SSH config讲解
+    1. config为了方便我们批量管理多个ssh
+    2. config存放在~/.ssh/config目录
+    3. config配置语法
+    
+##### 七. LINUX常用命令
+> 软件包管理器: yum
++ 安装软件: yum install xxx
++ 卸载软件: yum remove  xxx
++ 搜索软件: yum search xxx
++ 清理缓存: yum clean packages
++ 列出已安装: yum list
++ 软件包信息: yum info xxx
+
+> 服务器硬件资源信息
++ 内存: free -m
++ 磁盘: df -h
++ 负载: w/top
++ cpu个数和核数: cat /proc/cpuinfo
+
+> 文件操作系统
++ 根目录 /
++ 家目录 /home
++ 临时目录 /tmp
++ 配置目录 /etc
++ 用户程序目录 /usr
+
+> 文件操作基本命令
+
+
+> vim编辑
+
+
+> 系统用户操作命令
++ 添加用户 useradd or adduser
++ 删除用户 userdel
++ 设置密码 passwd
+
+
+##### 八. 防火墙的设置
++ 作用: 保护服务器的安全
++ 设置防火墙规则 
++ 关闭防火墙
++ 安装: yum install firewalld
++ 启动: service firewalled start
++ 检查状态: service firewalld status
++ 关闭或禁用防火墙: service firewalld stop/disable 
+> 注意: 线上防火墙一定要开启
+
+
+
+
+     
