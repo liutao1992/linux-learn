@@ -1,23 +1,20 @@
-一. 安装虚拟机
+##### 一. 安装虚拟机
++ virtualbox下载地址: 
 
-##### virtualbox下载地址: 
 ``https://www.virtualbix.org/wiki/Download_Old_Builds_5_1``
 
-二. 镜像下载
-##### Centos官方下载地址:
+##### 二. 镜像下载
++ Centos官方下载地址:``https://www.centos.org/download/``
 
-``https://www.centos.org/download/``
++ Centos下载:``http://mirrors.163.com/centos/7/isos/x86_64/Centos-7-x86_64-Minimal-1611.iso``
 
-##### Centos下载
-``http://mirrors.163.com/centos/7/isos/x86_64/Centos-7-x86_64-Minimal-1611.iso``
+##### 三. 64位操作系统与32位操作系统的区别
 
-三. 64位操作系统与32位操作系统的区别
-
-四. 云服务器的平台
+##### 四. 云服务器的平台
 1. 阿里云
 2. 腾讯云
 
-五. 准备工作
+##### 五. 准备工作
 + 查看IP ``ifconfig`` 
 
 + 查看网络脚本文件
@@ -36,7 +33,7 @@
 
 + 安装vim
 
-六. 认识ssh
+##### 六. 认识ssh
 + (1)ssh是什么?
 + (2)linux平台安装服务端软件: ``yum install openssh-server`` 通常情况下centos在安装openssh-server时,ssh的客户端就已经安装好了.
 + (3)linux平台需要安装客户端软件:SSH工具``yum install openssh-clients``
@@ -87,8 +84,33 @@
 + 安装: yum install firewalld
 + 启动: service firewalled start
 + 检查状态: service firewalld status
-+ 关闭或禁用防火墙: service firewalld stop/disable 
++ 关闭或禁用防火墙: service firewalld stop/disable
++ 当我们firewalld命令安装好后,系统就会提供这么一个命令: ``firewall-cmd`` 
+
+> firewall-cmd的使用:
++ 查看版本: ``firewall-cmd --version``
++ 查看防火墙的状态: ``firewall-cmd --status``
++ 查看防火墙的区域: ``firewall-cmd --get-zones``
++ 列出所有端口: ``firewall-cmd --list-ports``
++ 查看服务是否存在: ``firewall-cmd --query-service=ssh`` 如果返回yes,则表明存在；no则表明不存在.
++ 删除服务: ``firewall-cmd --remove-service=ssh`` 服务一旦删除,服务将拒绝访问
++ 添加服务: ``firewall-cmd --add-service=ssh`` 服务添加成功后,则可以访问
++ 列出所有服务: ``firewall-cmd --list-service``
+> **注意:服务与端口是不冲突的,我们即可以通过端口开头服务,也能通过"服务"进行开通,但一个服务可能包含多个端口,所以建议通过服务名称进行开头**
++ 添加服务端口: ``firewall-cmd --add-port=22/tcp``
++ 删除服务端口: ``firewall-cmd --remove-port=22/tcp``
 > 注意: 线上防火墙一定要开启
+
+
+##### 九. Apache基本操作
++ 安装: yum install httpd
+> appache启动好后,需要关闭防火墙(或者将该服务加入防火墙设置),然后访问默认端口即可看到appache的默认页面
++ 启动: service httpd start
++ 停止: service httpd stop
+> Appache的配置
++ 配置虚拟主机
+
+
 
 
 
